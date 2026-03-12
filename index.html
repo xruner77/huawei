@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林城市微更新活动 - 发现身边的美好与可能</title>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">GUILIN MICRO-RENEWAL</div>
+        <div class="nav-links" style="display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem;">
+            <a href="#about" style="text-decoration: none; color: inherit;">概况</a>
+            <a href="#tracks" style="text-decoration: none; color: inherit;">赛道</a>
+            <a href="#review" style="text-decoration: none; color: inherit;">评审</a>
+            <a href="#timeline" style="text-decoration: none; color: inherit;">日程</a>
+            <a href="#prizes" style="text-decoration: none; color: inherit;">奖项</a>
+        </div>
+    </nav>
+
+    <!-- Intro Splash Screen (Now First Hero Section) -->
+    <div id="splash">
+        <div class="intro-container">
+            <div class="scene">
+                <!-- Flying Images -->
+                <img class="fly-img" src="img/1.jpg" alt="Gallery 1">
+                <img class="fly-img" src="img/2.jpg" alt="Gallery 2">
+                <img class="fly-img" src="img/3.jpg" alt="Gallery 3">
+                <img class="fly-img" src="img/4.jpg" alt="Gallery 4">
+                <img class="fly-img" src="img/5.jpg" alt="Gallery 5">
+                <img class="fly-img" src="img/6.jpg" alt="Gallery 6">
+                <img class="fly-img" src="img/7.jpg" alt="Gallery 7">
+                <!-- Final Background -->
+                <img class="final-img" src="img/8.jpg" alt="Guilin Landscape">
+            </div>
+            <div class="intro-content" style="color: #fff; text-shadow: 0 4px 30px rgba(0,0,0,0.5);">
+                <p style="font-size: 1.2rem; letter-spacing: 0.4em; margin-bottom: 20px; opacity: 0.9; font-weight: 300;">桂林市城市设计竞赛系列活动</p>
+                <h1 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.2; margin-bottom: 20px;">微光成炬<br>更新城市</h1>
+                <p style="font-size: clamp(0.9rem, 2vw, 1.4rem); letter-spacing: 0.8em; font-weight: 200; opacity: 0.8;">发现身边的美好与可能</p>
+                <a href="#about" class="cta-btn" style="background: #fff; color: #000; border: none; margin-top: 40px; padding: 15px 40px; font-size: 0.9rem;">向下探索</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="content">
+
+        <!-- Intro Section -->
+        <section id="about">
+            <div class="container">
+                <p style="color: var(--primary-color); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">ACTIVITY GOAL</p>
+                <h2 class="section-title">活动总体目标</h2>
+                <div class="big-text">
+                    本次活动以<span style="color: var(--primary-color); font-weight: 800;">“微光成炬，更新城市”</span>为核心，旨在发现身边的美好与可能。
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">
+                        通过摄影记录变换，通过设计赋予新生。我们面向全社会征集作品，挖掘亮点案例，搭建全民参与平台，为桂林市的品质提升注入源源不断的创造活力。
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">
+                        无论是老旧社区的改造，还是街角花园的重塑，每一个微小的改变都是城市向美而行的坚实一步。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tracks Section -->
+        <section id="tracks" style="background-color: #fafafa;">
+            <div class="container">
+                <p style="color: var(--primary-color); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">TWO MAIN TRACKS</p>
+                <h2 class="section-title">双子赛道概览</h2>
+                <div class="track-grid">
+                    <!-- Track 1 -->
+                    <div class="hover-card">
+                        <div style="overflow: hidden; height: 300px;">
+                            <img src="img/1.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="padding: 50px;">
+                            <span style="font-size: 0.9rem; font-weight: 700; color: var(--primary-color); letter-spacing: 1px;">TRACK 01</span>
+                            <h3 style="font-size: 2rem; margin: 15px 0 25px; font-weight: 800;">“微改焕新·镜见桂林”<br>摄影大赛</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;">聚焦五城区老城中心，定格工业厂房、历史街巷、山水风貌及民生社区的华丽蜕变。用镜头传递城市的烟火气与幸福感。</p>
+                        </div>
+                    </div>
+                    <!-- Track 2 -->
+                    <div class="hover-card">
+                        <div style="overflow: hidden; height: 300px;">
+                            <img src="img/4.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="padding: 50px;">
+                            <span style="font-size: 0.9rem; font-weight: 700; color: var(--primary-color); letter-spacing: 1px;">TRACK 02</span>
+                            <h3 style="font-size: 2rem; margin: 15px 0 25px; font-weight: 800;">“精雕山水城·微改惠民生”<br>设计大赛</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;">针对街角空间、闲置地块等，征集具备实用性、创新性及高颜值的微更新设计方案。让创意在山水间绽放，为民生增色。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <div class="container">
+                <p style="color: var(--primary-color); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">TIMELINE</p>
+                <h2 class="section-title">活动日程安排</h2>
+                <div style="display: flex; flex-direction: column; position: relative; padding-left: 60px; margin-top: 40px;">
+                    <div style="position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary-color), #eee);"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">3月10日</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary);">竞赛公告发布 · 活动正式启动</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">3月 - 4月</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary);">作品征集期（摄影至3.31 | 设计至4.10）</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">4月中下旬</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary);">网络投票与专家评审 · 综合评分（权重70%：30%）</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">5月 - 6月</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary);">优秀作品展示 · 颁奖仪式 · 规划展示馆实体展览</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Process Section -->
+        <section id="review" style="background-color: #f0f4f4;">
+            <div class="container">
+                <p style="color: var(--primary-color); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">JUDGING & REVIEW</p>
+                <h2 class="section-title">评审流程与规则</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div style="background: #fff; padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
+                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">摄影大赛评审</h3>
+                        <ul style="list-style: none; padding: 0; line-height: 2; color: var(--text-secondary);">
+                            <li><strong style="color: var(--text-primary);">网络投票与提名：</strong>4月1日 - 4月15日</li>
+                            <li><strong style="color: var(--text-primary);">专家评审阶段：</strong>4月16日 - 4月20日</li>
+                            <li><strong style="color: var(--text-primary);">评分权重：</strong>网络投票 70% + 专家评审 30%</li>
+                            <li style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">* 每人每日限投 3 票</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fff; padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
+                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">设计大赛评审</h3>
+                        <ul style="list-style: none; padding: 0; line-height: 2; color: var(--text-secondary);">
+                            <li><strong style="color: var(--text-primary);">网络投票与提名：</strong>4月21日 - 5月5日</li>
+                            <li><strong style="color: var(--text-primary);">专家评审阶段：</strong>5月6日 - 5月10日</li>
+                            <li><strong style="color: var(--text-primary);">评分权重：</strong>网络投票 70% + 专家评审 30%</li>
+                            <li style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">* 专家提名作品可直接入围优秀作品</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prizes Section -->
+        <section id="prizes" style="background: var(--bg-dark); color: #fff;">
+            <div class="container">
+                <p style="color: var(--accent-color); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">AWARDS & HONORS</p>
+                <h2 class="section-title" style="color: #fff;">奖项与荣誉设置</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                    <!-- 1st -->
+                    <div class="prize-card">
+                        <div style="font-size: 1.1rem; color: var(--accent-color); margin-bottom: 15px; font-weight: 700; letter-spacing: 2px;">01 一等奖</div>
+                        <div style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">¥ 3000</div>
+                        <div style="font-size: 1rem; color: #888; margin-bottom: 30px;">摄影 & 设计赛道各设 1-2 名</div>
+                        <ul style="list-style: none; padding: 0; color: #ccc; font-size: 0.95rem; line-height: 2;">
+                            <li>• 荣誉证书</li>
+                            <li>• 媒体专题采访</li>
+                            <li>• 线下颁奖典礼</li>
+                        </ul>
+                    </div>
+                    <!-- 2nd -->
+                    <div class="prize-card">
+                        <div style="font-size: 1.1rem; color: var(--accent-color); margin-bottom: 15px; font-weight: 700; letter-spacing: 2px;">02 二等奖</div>
+                        <div style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">¥ 2000</div>
+                        <div style="font-size: 1rem; color: #888; margin-bottom: 30px;">摄影 & 设计赛道各设 2-3 名</div>
+                        <ul style="list-style: none; padding: 0; color: #ccc; font-size: 0.95rem; line-height: 2;">
+                            <li>• 荣誉证书</li>
+                            <li>• 作品辑成果汇编</li>
+                            <li>• 线上线下同步展示</li>
+                        </ul>
+                    </div>
+                    <!-- 3rd -->
+                    <div class="prize-card">
+                        <div style="font-size: 1.1rem; color: var(--accent-color); margin-bottom: 15px; font-weight: 700; letter-spacing: 2px;">03 三等奖</div>
+                        <div style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">¥ 1000</div>
+                        <div style="font-size: 1rem; color: #888; margin-bottom: 30px;">摄影 & 设计赛道各设 3-5 名</div>
+                        <ul style="list-style: none; padding: 0; color: #ccc; font-size: 0.95rem; line-height: 2;">
+                            <li>• 荣誉证书</li>
+                            <li>• 作品辑成果汇编</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submission Section -->
+        <section id="submission" style="text-align: center; background: #fafafa;">
+            <div class="container">
+                <h2 class="section-title">立即参与</h2>
+                <div class="big-text" style="margin: 0 auto 40px;">将你的创意与发现，转化为城市的美好未来。</div>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="cta-btn">官方平台投稿</a>
+                    <a href="#" class="cta-btn" style="background: #fff; color: #000; border: 1px solid #ddd;">下载报名表</a>
+                </div>
+                <div style="margin-top: 60px; color: #888; font-size: 1rem;">
+                    投稿邮箱：xxx@xxx.com <br>
+                    邮件主题：摄影/设计大赛 + 姓名 + 联系电话
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="padding: 100px 5% 60px; background: #fff; border-top: 1px solid #eee;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; text-align: left;">
+                    <div>
+                        <div class="logo" style="margin-bottom: 30px;">GUILIN URBAN<br>MICRO-RENEWAL</div>
+                        <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                            致力于通过“小而美”的改变，提升桂林城市品质，让山水之城更具人文温度。
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 25px; font-weight: 700;">组织架构</h4>
+                        <p style="font-size: 0.9rem; color: #666; line-height: 2;">
+                            <span style="font-weight: 600; color: #333;">主办单位</span><br>
+                            桂林市自然资源局
+                        </p>
+                        <p style="font-size: 0.9rem; color: #666; line-height: 2; margin-top: 20px;">
+                            <span style="font-weight: 600; color: #333;">承办单位</span><br>
+                            桂林市城市规划设计研究院<br>
+                            桂林市测绘研究院<br>
+                            桂林市国土资源规划测绘院<br>
+                            桂林市城市规划信息技术中心<br>
+                            桂林市城市规划展示馆
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 25px; font-weight: 700;">联系我们</h4>
+                        <p style="font-size: 0.9rem; color: #666; line-height: 2;">
+                            桂林市自然资源局微更新工作办公室<br>
+                            桂林市投资发展商务大厦南楼1016
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid #f0f0f0; text-align: center; font-size: 0.85rem; color: #aaa;">
+                    &copy; 2026 Guilin Urban Design Competition Series. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
