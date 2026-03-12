@@ -134,40 +134,63 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(el);
     });
 
-    // --- Track Expansion Interaction (Anchored Push) ---
+    // --- Track Expansion & Mobile Modal Interaction ---
     const trackGrid = document.querySelector('.track-grid');
     const cards = document.querySelectorAll('.hover-card');
     const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+    const mobileModal = document.getElementById('mobile-modal');
+    const modalContentArea = document.getElementById('modal-content-area');
+    const modalCloseBtn = document.querySelector('.modal-close-btn');
+
+    const openModal = (trackId) => {
+        const detailContent = document.querySelector(`#track-${trackId} .detail-inner`).innerHTML;
+        modalContentArea.innerHTML = detailContent;
+        mobileModal.classList.add('active');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeModal = () => {
+        mobileModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    };
 
     learnMoreButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const trackId = btn.getAttribute('data-track');
-            const currentCard = document.getElementById(`track-${trackId}`);
-            const isExpanded = currentCard.classList.contains('expanded');
+            const isMobile = window.innerWidth <= 968;
 
-            if (isExpanded) {
-                // Collapse everything
-                cards.forEach(card => card.classList.remove('expanded', 'shrunken'));
-                trackGrid.classList.remove('has-expanded');
-                // Reset all button texts
-                learnMoreButtons.forEach(b => b.textContent = '了解更多');
+            if (isMobile) {
+                openModal(trackId);
             } else {
-                // Expand target, shrink other
-                cards.forEach(card => {
-                    if (card === currentCard) {
-                        card.classList.add('expanded');
-                        card.classList.remove('shrunken');
-                        btn.textContent = '收起详情';
-                    } else {
-                        card.classList.add('shrunken');
-                        card.classList.remove('expanded');
-                        // Find the button in the shrunken card and reset it just in case
-                        const otherBtn = card.querySelector('.learn-more-btn');
-                        if (otherBtn) otherBtn.textContent = '了解更多';
-                    }
-                });
-                trackGrid.classList.add('has-expanded');
+                // Desktop Anchored Push Logic
+                const currentCard = document.getElementById(`track-${trackId}`);
+                const isExpanded = currentCard.classList.contains('expanded');
+
+                if (isExpanded) {
+                    cards.forEach(card => card.classList.remove('expanded', 'shrunken'));
+                    trackGrid.classList.remove('has-expanded');
+                    learnMoreButtons.forEach(b => b.textContent = '了解更多');
+                } else {
+                    cards.forEach(card => {
+                        if (card === currentCard) {
+                            card.classList.add('expanded');
+                            card.classList.remove('shrunken');
+                            btn.textContent = '收起详情';
+                        } else {
+                            card.classList.add('shrunken');
+                            card.classList.remove('expanded');
+                            const otherBtn = card.querySelector('.learn-more-btn');
+                            if (otherBtn) otherBtn.textContent = '了解更多';
+                        }
+                    });
+                    trackGrid.classList.add('has-expanded');
+                }
             }
         });
+    });
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    mobileModal.addEventListener('click', (e) => {
+        if (e.target === mobileModal) closeModal();
     });
 });
