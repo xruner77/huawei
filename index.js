@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Navigation Scroll Effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        // Change threshold to 100px so it only appears when scrolling down past the first part
+        if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -111,45 +112,22 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: pushEase
     }, 0);
 
-    // 4. 文字入场
-    tl.to(introContent, {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "power2.out"
-    }, pushDuration * 0.7);
-
-    // 初始状态
-    gsap.set(introContent, { opacity: 0, y: 30 });
-
-    // 导航栏入场
-    gsap.from(navbar, {
-        y: -100,
-        opacity: 0,
-        duration: 1,
-        delay: pushDuration * 0.9,
-        ease: "power2.out"
+    // Native Javascript for section scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: stop observing once visible
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
     });
 
-    // 开启后续滚动动画
-    startContentAnimations();
-
-    function startContentAnimations() {
-        gsap.utils.toArray('section').forEach(section => {
-            gsap.to(section, {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                }
-            });
-        });
-    }
-
-    // 页面其它章节初始位移
-    gsap.set('section', { y: 50, opacity: 0 });
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('fade-section');
+        observer.observe(section);
+    });
 });

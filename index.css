@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap');
+@import url('fonts/inter.css');
 
 :root {
     --primary-color: #004d40;
@@ -83,30 +83,77 @@ body {
 
 .intro-content {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #000;
-    z-index: 10;
-    pointer-events: none;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+    pointer-events: none; /* 防止大容器遮挡背景的交互 */
+    padding-bottom: 8vh; /* 内容整体上移，与之前 top:42% 的视觉效果一致 */
 }
 
-.intro-content h1 {
+.intro-content > * {
+    pointer-events: auto; /* 恢复子元素（如按钮）的点击功能 */
+}
+
+.intro-content h1.intro-title {
     font-size: clamp(3rem, 10vw, 6rem);
     letter-spacing: 0.3em;
     margin: 0;
-    font-weight: 200;
-    text-transform: uppercase;
+    font-weight: 800; /* Bolder for "微光成炬" */
+    text-transform: none;
+    color: #000;
 }
 
-.intro-content p {
-    font-size: clamp(0.9rem, 2vw, 1.4rem);
-    letter-spacing: 0.8em;
-    margin-top: 20px;
-    font-weight: 300;
-    opacity: 0.7;
+.intro-content p.intro-sub-top,
+.intro-content p.intro-sub-bottom {
+    margin: 0;
+    color: #000;
+    opacity: 0;
+}
+
+@keyframes fadeUpIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-sub-top {
+    animation: fadeUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 3.2s;
+}
+
+.intro-sub-bottom {
+    animation: fadeUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 3.4s;
+}
+
+.intro-btn {
+    opacity: 0;
+    animation: fadeUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 3.6s;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accent-text {
+    color: #ba0731 !important;
+}
+
+.white-btn:hover {
+    background: #f8f8f8 !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #bbb !important;
 }
 
 /* Header/Nav */
@@ -124,12 +171,18 @@ nav {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none; /* 防止遮挡点击 */
 }
 
 nav.scrolled {
     padding: 15px 5%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto; /* 恢复点击 */
 }
 
 .logo {
@@ -148,6 +201,18 @@ section {
     flex-direction: column;
     justify-content: center;
     background: var(--bg-light);
+}
+
+/* Section Fade Animations */
+.fade-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .container {
