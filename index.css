@@ -199,6 +199,7 @@ nav.scrolled {
     font-size: 1.2rem;
     letter-spacing: 1px;
     color: inherit;
+    white-space: nowrap;
 }
 
 /* Section Common */
@@ -696,8 +697,45 @@ h2.section-title {
     box-shadow: 0 10px 25px rgba(0, 77, 64, 0.3);
 }
 
+/* Footer Grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    text-align: left;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    nav {
+        padding: 15px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .logo {
+        font-size: 1.1rem !important;
+        text-align: center;
+    }
+    footer .logo {
+        font-size: 1.2rem !important;
+        margin-bottom: 20px !important;
+    }
+    .nav-links {
+        gap: 12px !important;
+        font-size: 0.85rem !important;
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .nav-links a {
+        white-space: nowrap;
+    }
+
+    .footer-grid {
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
     .track-grid {
         grid-template-columns: 1fr;
     }
