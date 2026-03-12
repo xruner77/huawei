@@ -129,8 +129,45 @@ document.addEventListener("DOMContentLoaded", () => {
         rootMargin: "0px 0px -50px 0px"
     });
 
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('fade-section');
-        observer.observe(section);
+    document.querySelectorAll('section, .fade-section').forEach(el => {
+        el.classList.add('fade-section');
+        observer.observe(el);
+    });
+
+    // --- Track Expansion Interaction (Anchored Push) ---
+    const trackGrid = document.querySelector('.track-grid');
+    const cards = document.querySelectorAll('.hover-card');
+    const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+
+    learnMoreButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const trackId = btn.getAttribute('data-track');
+            const currentCard = document.getElementById(`track-${trackId}`);
+            const isExpanded = currentCard.classList.contains('expanded');
+
+            if (isExpanded) {
+                // Collapse everything
+                cards.forEach(card => card.classList.remove('expanded', 'shrunken'));
+                trackGrid.classList.remove('has-expanded');
+                // Reset all button texts
+                learnMoreButtons.forEach(b => b.textContent = '了解更多');
+            } else {
+                // Expand target, shrink other
+                cards.forEach(card => {
+                    if (card === currentCard) {
+                        card.classList.add('expanded');
+                        card.classList.remove('shrunken');
+                        btn.textContent = '收起详情';
+                    } else {
+                        card.classList.add('shrunken');
+                        card.classList.remove('expanded');
+                        // Find the button in the shrunken card and reset it just in case
+                        const otherBtn = card.querySelector('.learn-more-btn');
+                        if (otherBtn) otherBtn.textContent = '了解更多';
+                    }
+                });
+                trackGrid.classList.add('has-expanded');
+            }
+        });
     });
 });

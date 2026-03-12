@@ -1,8 +1,8 @@
 @import url('fonts/inter.css');
 
 :root {
-    --primary-color: #004d40;
-    --primary-gradient: linear-gradient(135deg, #004d40 0%, #00695c 100%);
+    --primary-color: #ba0731;
+    --primary-gradient: linear-gradient(135deg, #ba0731 0%, #8a0524 100%);
     --accent-color: #c5a059;
     --text-primary: #1d1d1f;
     --text-secondary: #424245;
@@ -204,8 +204,8 @@ nav.scrolled {
 /* Section Common */
 section {
     position: relative;
-    padding: 60px 5%;
-    min-height: 100vh;
+    padding: 80px 5%;
+    /*min-height: 100vh;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -245,26 +245,170 @@ h2.section-title {
     max-width: 900px;
 }
 
-/* Track Cards */
+/* Track Cards - Flex Layout for Push Animation */
 .track-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    height: 650px; /* Fixed height to prevent jumping */
+    overflow: hidden;
+    position: relative;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hover-card {
+    flex: 1 1 50%;
     background: #fff;
     border-radius: 32px;
     overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
 }
 
-.hover-card:hover {
-    transform: translateY(-20px);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+/* Expansion States */
+.hover-card.expanded {
+    flex: 1 0 100% !important;
+    cursor: default;
+}
+
+/* Anchoring: Track 1 expands right, Track 2 expands left */
+#track-photo.expanded .card-content-wrapper {
+    flex-direction: row;
+}
+
+#track-design.expanded .card-content-wrapper {
+    flex-direction: row-reverse;
+}
+
+.hover-card.shrunken {
+    flex: 0 0 0% !important;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+.card-content-wrapper {
+    display: flex;
+    width: 100%; /* Match expanded card width */
+    height: 100%;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-preview {
+    width: 100%; /* Default in 50/50 split */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-card.expanded .card-preview {
+    width: 50%; /* Specifically 50% of the 100% container */
+}
+
+.card-detail {
+    width: 0%; /* Hidden by default */
+    flex-shrink: 0;
+    background: #fff;
+    padding: 40px 60px;
+    position: relative;
+    border-left: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: all 0.6s ease;
+    overflow: hidden;
+}
+
+#track-design .card-detail {
+    border-left: none;
+    border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.hover-card.expanded .card-detail {
+    width: 50%;
+    opacity: 1;
+}
+
+.hover-card:not(.expanded) .card-detail {
+    display: none;
+}
+
+.hover-card.expanded .card-detail {
+    display: flex;
+}
+
+/* Close Button - Keep as backup but toggle btn is primary */
+.close-detail-btn {
+    display: none; /* Hide X button as user wants toggle btn */
+}
+
+/* Detail Content Scrolling */
+.detail-inner {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+/* Custom Scrollbar */
+.detail-inner::-webkit-scrollbar {
+    width: 4px;
+}
+.detail-inner::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.02);
+}
+.detail-inner::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.detail-section {
+    margin-bottom: 30px;
+}
+
+.detail-section h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.detail-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.learn-more-btn {
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.learn-more-btn:hover {
+    background: #c5a059;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+}
+
+#track-design .learn-more-btn {
+    background: var(--accent-color);
+}
+#track-design .learn-more-btn:hover {
+    background: var(--primary-color);
 }
 
 .hover-card img {
@@ -275,7 +419,7 @@ h2.section-title {
     transform: scale(1.05);
 }
 
-/* Prize Cards */
+/* Prize Cards - Restored Original Style */
 .prize-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -288,23 +432,250 @@ h2.section-title {
 .prize-card:hover {
     background: rgba(255, 255, 255, 0.06);
     border-color: var(--accent-color);
+    transform: translateY(-10px);
 }
 
-/* Timeline */
-.timeline-item {
-    padding-bottom: 60px;
+.prize-card-rank {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.prize-card-amount {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+.prize-card-count {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.prize-card-list {
+    list-style: none;
+    padding: 0;
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 2;
+}
+
+/* ====== Timeline New Dual Layout ====== */
+.timeline-dual {
+    display: flex;
+    flex-direction: column;
     position: relative;
+    max-width: 1000px;
+    margin: 60px auto 0;
+}
+
+.timeline-axis {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-color), #eee);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.timeline-headers {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-headers > div {
+    flex: 1;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.timeline-row {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-row.mt-40 {
+    margin-top: 40px;
+}
+
+.timeline-card {
+    width: 45%;
+    position: relative;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+    z-index: 2;
+}
+
+.timeline-card.left {
+    text-align: right;
+}
+
+.timeline-card.right {
+    text-align: left;
+}
+
+.timeline-card.center {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .timeline-dot {
     position: absolute;
-    left: -44px;
-    top: 5px;
-    width: 12px;
-    height: 12px;
+    top: 30px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--primary-color);
-    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #eee;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 2px rgba(186, 7, 49, 0.2); /* using primary-color rgba */
+    z-index: 3;
+}
+
+.timeline-card.left .timeline-dot {
+    right: -11.5%; /* Adjust based on calc to sit exactly on the center axis */
+    transform: translateX(50%);
+}
+
+.timeline-card.right .timeline-dot {
+    left: -11.5%;
+    transform: translateX(-50%);
+}
+
+.timeline-card.center .timeline-dot {
+    left: 50%;
+    top: -8px;
+    transform: translateX(-50%);
+}
+
+.time-date {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.time-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Mobile responsive timeline */
+@media (max-width: 768px) {
+    .timeline-dual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 使内容层级失效，让子项直接参与 .timeline-dual 的 flex 排序 */
+    .timeline-headers, .timeline-row {
+        display: contents;
+    }
+
+    .timeline-axis {
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%; /* 确保轴线穿过所有聚合后的节点 */
+    }
+
+    /* 定义排序与间距 */
+    /* 1. 公告节点 (公告卡片) */
+    .timeline-row:nth-of-type(1) .timeline-card.center { 
+        order: 10; 
+        margin-top: 20px !important;
+        margin-bottom: 50px !important; 
+    }
+
+    /* 2. 摄影赛道聚合 */
+    .header-left { 
+        order: 20; 
+        margin-top: 40px !important;
+        margin-bottom: 30px !important;
+        background: #fff !important; /* 实色背景遮挡线条 */
+        color: var(--primary-color) !important;
+        border: 2px solid rgba(186, 7, 49, 0.2);
+        padding: 10px 30px !important;
+        border-radius: 50px;
+        position: relative;
+        z-index: 10;
+    }
+    .timeline-card.left { 
+        order: 21; 
+        margin-bottom: 40px !important; 
+    }
+
+    /* 3. 设计赛道聚合 */
+    .header-right { 
+        order: 30; 
+        margin-top: 80px !important; 
+        margin-bottom: 30px !important;
+        background: #fff !important; /* 实色背景遮挡线条 */
+        color: var(--accent-color) !important;
+        border: 2px solid rgba(197, 160, 89, 0.2);
+        padding: 10px 30px !important;
+        border-radius: 50px;
+        position: relative;
+        z-index: 10;
+    }
+    .timeline-card.right { 
+        order: 31; 
+        margin-bottom: 40px !important; 
+    }
+
+    /* 4. 总结展览节点 */
+    .timeline-row:nth-last-of-type(1) .timeline-card.center { 
+        order: 40; 
+        margin-top: 50px !important; 
+    }
+
+    /* 基础卡片样式微调 */
+    .timeline-card, .timeline-card.center {
+        width: 90% !important;
+        padding: 30px 20px !important;
+        text-align: center !important;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05) !important;
+        border: 1px solid rgba(0,0,0,0.03) !important;
+        background: #fff !important;
+        margin: 0 auto !important;
+        position: relative;
+        z-index: 10;
+    }
+
+    .timeline-card.left .timeline-dot,
+    .timeline-card.right .timeline-dot,
+    .timeline-card.center .timeline-dot {
+        left: 50%;
+        right: auto;
+        top: -8px;
+        transform: translateX(-50%);
+    }
+
+    .time-date {
+        font-size: 1.2rem;
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
 }
 
 /* Buttons */
@@ -335,5 +706,16 @@ h2.section-title {
 
     section {
         padding: 80px 5%;
+    }
+}
+
+/* Media Queries for Tracks */
+@media (max-width: 968px) {
+    .card-content-wrapper {
+        flex-direction: column;
+        width: 100%;
+    }
+    .card-preview, .card-detail {
+        width: 100%;
     }
 }
