@@ -56,9 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const sceneCenterX = "50%";
     const sceneCenterY = "120%"; // 从 100% 下调至 130%
 
-    // 完全成比例缩放，确保大屏和小屏下的相对布局绝对一致
-    const imageWidth = w * 0.25;
-    const imageHeight = imageWidth * 0.625; // 16:10 比例
+    const imageWidth = 350;
+    const imageHeight = 250;
+
+    // 将扩散宽度和高度设为视窗的 2 倍
+    const diffW = 1600;
+    const diffH = h * 1;
 
     // 1. 初始化小图位置 (严格基于当前视区宽高计算距离，保持宽屏相同的构图比例)
     flyImgs.forEach((img, i) => {
@@ -70,8 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
             top: sceneCenterY,
             xPercent: -50,
             yPercent: -50,
-            x: item.x * w,
-            y: item.y * h,
+            x: item.x * diffW,
+            y: item.y * diffH,
             z: item.z,
             opacity: 1
         });
@@ -88,8 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         top: sceneCenterY,
         xPercent: -50,
         yPercent: -50,
-        x: lastItem.x * w,
-        y: lastItem.y * h,
+        x: lastItem.x * diffW,
+        y: lastItem.y * diffH,
         z: finalImgZ,
         opacity: 1
     });
