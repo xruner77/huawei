@@ -253,6 +253,7 @@ h2.section-title {
     height: 650px; /* Fixed height to prevent jumping */
     overflow: hidden;
     position: relative;
+    container-type: inline-size;
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -300,29 +301,28 @@ h2.section-title {
 }
 
 .card-preview {
-    width: 100%; /* Default in 50/50 split */
+    width: 50cqw; /* Lock to 50% of the grid container */
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hover-card.expanded .card-preview {
-    width: 50%; /* Specifically 50% of the 100% container */
+    width: 50cqw; /* Keep strictly 50cqw */
 }
 
 .card-detail {
-    width: 0%; /* Hidden by default */
+    width: 50cqw; /* Hidden initially, but layout width is fixed */
     flex-shrink: 0;
     background: #fff;
     padding: 40px 60px;
     position: relative;
     border-left: 1px solid rgba(0,0,0,0.05);
-    display: flex;
+    display: none;
     flex-direction: column;
     opacity: 0;
-    transition: all 0.6s ease;
-    overflow: hidden;
+    transition: opacity 0.6s ease;
+    overflow-y: auto;
 }
 
 #track-design .card-detail {
@@ -331,16 +331,8 @@ h2.section-title {
 }
 
 .hover-card.expanded .card-detail {
-    width: 50%;
-    opacity: 1;
-}
-
-.hover-card:not(.expanded) .card-detail {
-    display: none;
-}
-
-.hover-card.expanded .card-detail {
     display: flex;
+    opacity: 1;
 }
 
 /* Close Button - Keep as backup but toggle btn is primary */
@@ -420,6 +412,12 @@ h2.section-title {
 }
 
 /* Prize Cards - Restored Original Style */
+.prize-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
 .prize-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -708,16 +706,26 @@ h2.section-title {
         padding: 80px 5%;
     }
 
-    /* Reduce Prize Cards size on mobile */
+    /* Reduce Prize Cards size and show 2 per row on mobile */
+    .prize-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
     .prize-card {
-        padding: 30px 20px;
+        padding: 20px 15px;
         min-height: auto;
     }
     .prize-card-amount {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
     .prize-card-rank {
-        font-size: 1rem;
+        font-size: 0.9rem;
+    }
+    .prize-card-count {
+        font-size: 0.8rem;
+    }
+    .prize-card-list {
+        font-size: 0.85rem;
     }
 }
 

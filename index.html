@@ -77,7 +77,7 @@
                 </div>
                 <!-- 导语视频 -->
                 <div class="video-container"
-                    style="margin-top: 60px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); background: #000;">
+                    style="margin-top: 60px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); background: transparent;">
                     <video id="intro-video" src="img/testvideo.mp4" style="width: 100%; display: block;" autoplay loop
                         muted playsinline controls></video>
                 </div>
@@ -331,7 +331,7 @@
                     <h3
                         style="color: var(--accent-color); font-size: 1.8rem; margin-bottom: 40px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
                         （一）城市微更新主题摄影大赛</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div class="prize-grid">
                         <div class="prize-card">
                             <div class="prize-card-rank">01 一等奖</div>
                             <div class="prize-card-amount">¥ 3000</div>
@@ -370,7 +370,7 @@
                     <h3
                         style="color: var(--accent-color); font-size: 1.8rem; margin-bottom: 40px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
                         （二）城市微更新创意设计大赛</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div class="prize-grid">
                         <div class="prize-card">
                             <div class="prize-card-rank">01 一等奖</div>
                             <div class="prize-card-amount">¥ 3000</div>
@@ -468,6 +468,14 @@
             </div>
         </footer>
     </main>
+
+    <!-- Mobile Detail Modal -->
+    <div id="mobile-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close-btn">&times;</button>
+            <div id="modal-content-area"></div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>
