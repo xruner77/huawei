@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const pushDuration = 4; // 稍微拉长一点提升质感
     const pushEase = "expo.inOut";
 
-    // 全局中心点
+    // 全局中心点 (将 Y 轴中心点下移，使其远离上方的新高位标题)
     const sceneCenterX = "50%";
-    const sceneCenterY = "100%"; // 对齐原始代码
+    const sceneCenterY = "120%"; // 从 100% 下调至 130%
 
     // 响应式尺寸
     const imageWidth = (w < 768) ? w * 0.4 : w * 0.25;
