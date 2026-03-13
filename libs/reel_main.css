@@ -238,7 +238,7 @@
 .xmage-2026-box .xmage-2026 .section2 {
     width: 100%;
     position: relative;
-    padding: 0 0 15.625vw 0;
+    padding: 0 0 5vw 0;
 }
 
 .xmage-2026-box .xmage-2026 .section2-word {
@@ -248,7 +248,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 20vw;
+    top: 8vw;
     z-index: 20;
 }
 
@@ -271,7 +271,7 @@
 
 .xmage-2026-box .xmage-2026 .section2-container {
     width: 100%;
-    padding-top: 29vw;
+    padding-top: 20vw;
     overflow: hidden;
     position: relative;
 }
@@ -282,7 +282,7 @@
     overflow: hidden;
     background: linear-gradient(to top, #FFFBF700, #fff);
     width: 100%;
-    height: 15.625vw;
+    height: 10vw;
     position: absolute;
     top: 0;
     left: 0;
@@ -296,7 +296,7 @@
     overflow: hidden;
     background: linear-gradient(to bottom, #FFFBF700, #fff);
     width: 100%;
-    height: 15.625vw;
+    height: 10vw;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -605,12 +605,12 @@
 
 @media screen and (max-aspect-ratio:136/100) {
     .xmage-2026-box .xmage-2026 .section2 {
-        padding: 0 0 41.666666vw 0;
+        padding: 0 0 0 0;
     }
 
     .xmage-2026-box .xmage-2026 .section2-word {
         width: 74.027777vw;
-        top: 9vw;
+        top: 5vw;
         padding: 0 0 8.8888888vw 0;
     }
 
@@ -624,7 +624,7 @@
     }
 
     .xmage-2026-box .xmage-2026 .section2-container {
-        padding-top: 33vw;
+        padding-top: 28vw;
     }
 
     .xmage-2026-box .xmage-2026 .section2-container::before {
@@ -880,7 +880,7 @@
         width: 11.111111vw;
         height: 11.111111vw;
         top: auto;
-        bottom: 60vw;
+        bottom: 20vw;
         left: 36.1111111vw;
     }
 
