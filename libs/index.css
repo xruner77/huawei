@@ -252,7 +252,8 @@ h2.section-title {
     display: flex;
     gap: 30px;
     width: 100%;
-    height: 650px; /* Fixed height to prevent jumping */
+    height: 650px;
+    /* Fixed height to prevent jumping */
     overflow: hidden;
     position: relative;
     container-type: inline-size;
@@ -264,8 +265,8 @@ h2.section-title {
     background: #fff;
     border-radius: 32px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.03);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     display: flex;
@@ -297,29 +298,33 @@ h2.section-title {
 
 .card-content-wrapper {
     display: flex;
-    width: 100%; /* Match expanded card width */
+    width: 100%;
+    /* Match expanded card width */
     height: 100%;
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-preview {
-    width: 50cqw; /* Lock to 50% of the grid container */
+    width: 50cqw;
+    /* Lock to 50% of the grid container */
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
 }
 
 .hover-card.expanded .card-preview {
-    width: 50cqw; /* Keep strictly 50cqw */
+    width: 50cqw;
+    /* Keep strictly 50cqw */
 }
 
 .card-detail {
-    width: 50cqw; /* Hidden initially, but layout width is fixed */
+    width: 50cqw;
+    /* Hidden initially, but layout width is fixed */
     flex-shrink: 0;
     background: #fff;
     padding: 40px 60px;
     position: relative;
-    border-left: 1px solid rgba(0,0,0,0.05);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
     display: none;
     flex-direction: column;
     opacity: 0;
@@ -329,7 +334,7 @@ h2.section-title {
 
 #track-design .card-detail {
     border-left: none;
-    border-right: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .hover-card.expanded .card-detail {
@@ -339,7 +344,8 @@ h2.section-title {
 
 /* Close Button - Keep as backup but toggle btn is primary */
 .close-detail-btn {
-    display: none; /* Hide X button as user wants toggle btn */
+    display: none;
+    /* Hide X button as user wants toggle btn */
 }
 
 /* Detail Content Scrolling */
@@ -354,11 +360,13 @@ h2.section-title {
 .detail-inner::-webkit-scrollbar {
     width: 4px;
 }
+
 .detail-inner::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.02);
+    background: rgba(0, 0, 0, 0.02);
 }
+
 .detail-inner::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -401,6 +409,7 @@ h2.section-title {
 #track-design .learn-more-btn {
     background: var(--accent-color);
 }
+
 #track-design .learn-more-btn:hover {
     background: var(--primary-color);
 }
@@ -492,7 +501,7 @@ h2.section-title {
     z-index: 2;
 }
 
-.timeline-headers > div {
+.timeline-headers>div {
     flex: 1;
     text-align: center;
     font-size: 1.2rem;
@@ -518,8 +527,8 @@ h2.section-title {
     background: #fff;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
     z-index: 2;
 }
 
@@ -545,12 +554,14 @@ h2.section-title {
     border-radius: 50%;
     background: var(--primary-color);
     border: 4px solid #fff;
-    box-shadow: 0 0 0 2px rgba(186, 7, 49, 0.2); /* using primary-color rgba */
+    box-shadow: 0 0 0 2px rgba(186, 7, 49, 0.2);
+    /* using primary-color rgba */
     z-index: 3;
 }
 
 .timeline-card.left .timeline-dot {
-    right: -11.5%; /* Adjust based on calc to sit exactly on the center axis */
+    right: -11.5%;
+    /* Adjust based on calc to sit exactly on the center axis */
     transform: translateX(50%);
 }
 
@@ -586,30 +597,33 @@ h2.section-title {
     }
 
     /* 使内容层级失效，让子项直接参与 .timeline-dual 的 flex 排序 */
-    .timeline-headers, .timeline-row {
+    .timeline-headers,
+    .timeline-row {
         display: contents;
     }
 
     .timeline-axis {
         left: 50%;
         transform: translateX(-50%);
-        height: 100%; /* 确保轴线穿过所有聚合后的节点 */
+        height: 100%;
+        /* 确保轴线穿过所有聚合后的节点 */
     }
 
     /* 定义排序与间距 */
     /* 1. 公告节点 (公告卡片) */
-    .timeline-row:nth-of-type(1) .timeline-card.center { 
-        order: 10; 
+    .timeline-row:nth-of-type(1) .timeline-card.center {
+        order: 10;
         margin-top: 20px !important;
-        margin-bottom: 50px !important; 
+        margin-bottom: 50px !important;
     }
 
     /* 2. 摄影赛道聚合 */
-    .header-left { 
-        order: 20; 
+    .header-left {
+        order: 20;
         margin-top: 40px !important;
         margin-bottom: 30px !important;
-        background: #fff !important; /* 实色背景遮挡线条 */
+        background: #fff !important;
+        /* 实色背景遮挡线条 */
         color: var(--primary-color) !important;
         border: 2px solid rgba(186, 7, 49, 0.2);
         padding: 10px 30px !important;
@@ -617,17 +631,18 @@ h2.section-title {
         position: relative;
         z-index: 10;
     }
-    .timeline-card.left { 
-        order: 21; 
-        margin-bottom: 40px !important; 
+
+    .timeline-card.left {
+        order: 21;
+        margin-bottom: 40px !important;
     }
 
     /* 3. 设计赛道聚合 */
-    .header-right { 
-        order: 30; 
-        margin-top: 80px !important; 
+    .header-right {
+        order: 30;
         margin-bottom: 30px !important;
-        background: #fff !important; /* 实色背景遮挡线条 */
+        background: #fff !important;
+        /* 实色背景遮挡线条 */
         color: var(--accent-color) !important;
         border: 2px solid rgba(197, 160, 89, 0.2);
         padding: 10px 30px !important;
@@ -635,24 +650,25 @@ h2.section-title {
         position: relative;
         z-index: 10;
     }
-    .timeline-card.right { 
-        order: 31; 
-        margin-bottom: 40px !important; 
+
+    .timeline-card.right {
+        order: 31;
+        margin-bottom: 40px !important;
     }
 
     /* 4. 总结展览节点 */
-    .timeline-row:nth-last-of-type(1) .timeline-card.center { 
-        order: 40; 
-        margin-top: 50px !important; 
+    .timeline-row:nth-last-of-type(1) .timeline-card.center {
+        order: 40;
     }
 
     /* 基础卡片样式微调 */
-    .timeline-card, .timeline-card.center {
+    .timeline-card,
+    .timeline-card.center {
         width: 90% !important;
         padding: 30px 20px !important;
         text-align: center !important;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05) !important;
-        border: 1px solid rgba(0,0,0,0.03) !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05) !important;
+        border: 1px solid rgba(0, 0, 0, 0.03) !important;
         background: #fff !important;
         margin: 0 auto !important;
         position: relative;
@@ -713,14 +729,17 @@ h2.section-title {
         flex-direction: column;
         gap: 15px;
     }
+
     .logo {
         font-size: 1.1rem !important;
         text-align: center;
     }
+
     footer .logo {
         font-size: 1.2rem !important;
         margin-bottom: 20px !important;
     }
+
     .nav-links {
         gap: 12px !important;
         font-size: 0.85rem !important;
@@ -728,6 +747,7 @@ h2.section-title {
         width: 100%;
         flex-wrap: wrap;
     }
+
     .nav-links a {
         white-space: nowrap;
     }
@@ -751,19 +771,24 @@ h2.section-title {
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
+
     .prize-card {
         padding: 20px 15px;
         min-height: auto;
     }
+
     .prize-card-amount {
         font-size: 1.8rem;
     }
+
     .prize-card-rank {
         font-size: 0.9rem;
     }
+
     .prize-card-count {
         font-size: 0.8rem;
     }
+
     .prize-card-list {
         font-size: 0.85rem;
     }
@@ -838,7 +863,7 @@ h2.section-title {
     overflow-y: auto;
     transform: translateY(30px);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 .modal-overlay.active .modal-container {
@@ -865,3 +890,104 @@ h2.section-title {
 body.modal-open {
     overflow: hidden;
 }
+ / *   L i g h t b o x   S t y l e s   * / 
+ . i m a g e - l i g h t b o x   { 
+         d i s p l a y :   n o n e ; 
+         p o s i t i o n :   f i x e d ; 
+         z - i n d e x :   1 0 0 0 0 ; 
+         l e f t :   0 ; 
+         t o p :   0 ; 
+         w i d t h :   1 0 0 % ; 
+         h e i g h t :   1 0 0 % ; 
+         b a c k g r o u n d - c o l o r :   r g b a ( 0 ,   0 ,   0 ,   0 . 9 5 ) ; 
+         b a c k d r o p - f i l t e r :   b l u r ( 1 5 p x ) ; 
+         - w e b k i t - b a c k d r o p - f i l t e r :   b l u r ( 1 5 p x ) ; 
+         o p a c i t y :   0 ; 
+         t r a n s i t i o n :   o p a c i t y   0 . 4 s   e a s e ; 
+         p o i n t e r - e v e n t s :   n o n e ; 
+ } 
+ 
+ . i m a g e - l i g h t b o x . i s - o p e n   { 
+         d i s p l a y :   f l e x ; 
+         j u s t i f y - c o n t e n t :   c e n t e r ; 
+         a l i g n - i t e m s :   c e n t e r ; 
+         o p a c i t y :   1 ; 
+         p o i n t e r - e v e n t s :   a u t o ; 
+ } 
+ 
+ . l i g h t b o x - c l o s e   { 
+         p o s i t i o n :   a b s o l u t e ; 
+         t o p :   3 0 p x ; 
+         r i g h t :   4 0 p x ; 
+         c o l o r :   # f f f ; 
+         f o n t - s i z e :   5 0 p x ; 
+         f o n t - w e i g h t :   3 0 0 ; 
+         c u r s o r :   p o i n t e r ; 
+         l i n e - h e i g h t :   1 ; 
+         t r a n s i t i o n :   t r a n s f o r m   0 . 3 s   e a s e ; 
+         z - i n d e x :   1 0 0 0 1 ; 
+ } 
+ 
+ . l i g h t b o x - c l o s e : h o v e r   { 
+         t r a n s f o r m :   r o t a t e ( 9 0 d e g ) ; 
+ } 
+ 
+ . l i g h t b o x - c o n t e n t   { 
+         w i d t h :   1 0 0 % ; 
+         h e i g h t :   1 0 0 % ; 
+         d i s p l a y :   f l e x ; 
+         j u s t i f y - c o n t e n t :   c e n t e r ; 
+         a l i g n - i t e m s :   c e n t e r ; 
+         p a d d i n g :   2 0 p x ; 
+ } 
+ 
+ . l i g h t b o x - c o n t e n t   i m g   { 
+         m a x - w i d t h :   9 0 % ; 
+         m a x - h e i g h t :   9 0 % ; 
+         o b j e c t - f i t :   c o n t a i n ; 
+         b o r d e r - r a d i u s :   4 p x ; 
+         b o x - s h a d o w :   0   0   4 0 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 8 ) ; 
+         t r a n s f o r m :   s c a l e ( 0 . 9 ) ; 
+         t r a n s i t i o n :   t r a n s f o r m   0 . 5 s   c u b i c - b e z i e r ( 0 . 1 6 5 ,   0 . 8 4 ,   0 . 4 4 ,   1 ) ; 
+ } 
+ 
+ . i m a g e - l i g h t b o x . i s - o p e n   . l i g h t b o x - c o n t e n t   i m g   { 
+         t r a n s f o r m :   s c a l e ( 1 ) ; 
+ } 
+ 
+ @ m e d i a   s c r e e n   a n d   ( m a x - w i d t h :   7 6 8 p x )   { 
+         . l i g h t b o x - c l o s e   { 
+                 t o p :   2 0 p x ; 
+                 r i g h t :   2 0 p x ; 
+                 f o n t - s i z e :   4 0 p x ; 
+         } 
+ }
+
+/* Track Cards Responsive Optimization */
+.track-img-box {
+    overflow: hidden;
+    height: 300px;
+}
+
+.track-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.track-text-box {
+    padding: 50px;
+}
+
+@media (max-width: 768px) {
+    .track-img-box {
+        height: 220px; /* Reduced height on mobile */
+    }
+    
+    .track-text-box {
+        padding: 30px 20px; /* Tighter padding on mobile */
+    }
+}
+ 
+  
+ 
