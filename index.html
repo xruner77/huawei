@@ -85,30 +85,52 @@
                     style="margin-top: 30px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); background: transparent;">
                     <video id="intro-video"
                         src="https://fm.glshimg.com/video/2026/0313/6086b26ef427f819057558535acb39d4.mp4"
-                        style="width: 100%; display: block;" autoplay loop muted playsinline controls></video>
-						<script>
-							// 监听微信桥接就绪事件，触发视频播放
-						function wxAutoPlayVideo() {
-						  const video = document.getElementById('intro-video');
-						  if (!video) return;
-						  // 微信环境触发
-						  if (window.WeixinJSBridge) {
-							WeixinJSBridge.invoke('getNetworkType', {}, () => {
-							  video.play().catch(e => console.warn('播放失败：', e));
-							});
-						  } else {
-							document.addEventListener('WeixinJSBridgeReady', () => {
-							  video.play().catch(e => console.warn('播放失败：', e));
-							}, { once: true });
-						  }
-						  // 兼容非微信的移动端浏览器
-						  document.addEventListener('touchstart', () => {
-							if (video.paused) video.play();
-						  }, { once: true });
-						}
-						// 页面加载后执行
-						window.onload = wxAutoPlayVideo;
-						</script>
+                        style="width: 100%; display: block;" 
+                        autoplay loop muted playsinline 
+                        webkit-playsinline="true" 
+                        x5-video-player-type="h5-page" 
+                        x5-video-player-fullscreen="true" 
+                        x5-video-orientation="portrait" 
+                        x5-playsinline="true"
+                        controls></video>
+                    <script>
+                    function wxAutoPlayVideo() {
+                        const video = document.getElementById('intro-video');
+                        if (!video) return;
+
+                        // 核心：微信JSBridge就绪后触发播放
+                        const startPlay = () => {
+                            video.muted = true; // 必须静音才能在很多移动端环境下自动播放
+                            video.play().catch(e => {
+                                console.warn('WeChat autoplay failed, waiting for interaction:', e);
+                            });
+                        };
+
+                        if (window.WeixinJSBridge) {
+                            WeixinJSBridge.invoke('getNetworkType', {}, startPlay);
+                        } else {
+                            document.addEventListener('WeixinJSBridgeReady', startPlay, { once: true });
+                        }
+
+                        // 备用：用户第一次触摸屏幕时触发播放（移动端通用）
+                        document.addEventListener('touchstart', () => {
+                            if (video.paused) {
+                                video.muted = true;
+                                video.play();
+                            }
+                        }, { once: true });
+                        
+                        // 兜底：文档加载完成尝试播放
+                        window.addEventListener('load', () => {
+                            if (video.paused) {
+                                video.muted = true;
+                                video.play();
+                            }
+                        });
+                    }
+                    // 立即尝试初始化
+                    wxAutoPlayVideo();
+                    </script>
 					
                 </div>
             </div>
