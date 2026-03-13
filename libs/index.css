@@ -763,17 +763,18 @@ h2.section-title {
     }
 
     section {
-        padding: 40px 5%;
+        padding: 40px 20px; /* Increased side padding for better mobile space */
     }
 
     /* Reduce Prize Cards size and show 2 per row on mobile */
     .prize-grid {
         grid-template-columns: 1fr 1fr;
         gap: 15px;
+        margin: 0 10px; /* Added horizontal margin to the grid for extra breathing room */
     }
 
     .prize-card {
-        padding: 20px 15px;
+        padding: 25px 15px; /* Slightly adjusted padding */
         min-height: auto;
     }
 
