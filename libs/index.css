@@ -981,7 +981,7 @@ body.modal-open {
 
 @media (max-width: 768px) {
     .track-img-box {
-        height: 220px; /* Reduced height on mobile */
+        height: 160px; /* Further reduced height on mobile */
     }
     
     .track-text-box {
