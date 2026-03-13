@@ -86,6 +86,30 @@
                     <video id="intro-video"
                         src="https://fm.glshimg.com/video/2026/0313/6086b26ef427f819057558535acb39d4.mp4"
                         style="width: 100%; display: block;" autoplay loop muted playsinline controls></video>
+						<script>
+							// 监听微信桥接就绪事件，触发视频播放
+						function wxAutoPlayVideo() {
+						  const video = document.getElementById('intro-video');
+						  if (!video) return;
+						  // 微信环境触发
+						  if (window.WeixinJSBridge) {
+							WeixinJSBridge.invoke('getNetworkType', {}, () => {
+							  video.play().catch(e => console.warn('播放失败：', e));
+							});
+						  } else {
+							document.addEventListener('WeixinJSBridgeReady', () => {
+							  video.play().catch(e => console.warn('播放失败：', e));
+							}, { once: true });
+						  }
+						  // 兼容非微信的移动端浏览器
+						  document.addEventListener('touchstart', () => {
+							if (video.paused) video.play();
+						  }, { once: true });
+						}
+						// 页面加载后执行
+						window.onload = wxAutoPlayVideo;
+						</script>
+					
                 </div>
             </div>
         </section>
@@ -568,7 +592,7 @@
                             <!-- Preview Content -->
                             <div class="card-preview">
                                 <div class="track-img-box">
-                                    <img src="https://assets.glshimg.com/news/special/urbanrenewal/img/sjds.jpg">
+                                    <img src="https://assets.glshimg.com/news/special/urbanrenewal/img/sjds1.jpg">
                                 </div>
                                 <div class="track-text-box">
                                     <span
