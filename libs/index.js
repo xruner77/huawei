@@ -56,8 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sceneCenterX = "50%";
     const sceneCenterY = "120%"; // 从 100% 下调至 130%
 
-    const imageWidth = 350;
-    const imageHeight = 250;
+    const isMobile = window.innerWidth <= 768;
+    const imageWidth = isMobile ? 250 : 350;
+    const imageHeight = isMobile ? 350 : 250;
 
     // 将扩散宽度和高度设为视窗的 2 倍
     const diffW = 1600;
